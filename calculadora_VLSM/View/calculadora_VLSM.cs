@@ -57,7 +57,7 @@ namespace calculadora_VLSM
 
             else
             {
-                MessageBox.Show("Classe customizada");
+                MessageBox.Show("Classe customizada, o cálculo não podera ser realizado");
             }
 
             return maskPad;
@@ -66,9 +66,22 @@ namespace calculadora_VLSM
 
         public void preencher()
         {
-            dgv.DataSource = null;
-            dgv.DataSource = redehosts;
+            for(int i = 0; i < redehosts.Count; i++)
+            {
+
+                dgv.Rows.Add(redehosts);
+                //dgv.Rows[i].Cells[0].Value = i;
+                dgv.Rows[i].Cells[0].Value = redehosts[i];
+                dgv.Rows[i].Cells[1].Value = (redehosts[i] + 2);
+            }
+        
         }
+
+        //public int potenciacao(int i)
+        //{
+        //    Math.Pow(i, 2);
+        //    return i;
+        //}
 
         private void btnContinuar_Click(object sender, EventArgs e)
         {
@@ -83,17 +96,21 @@ namespace calculadora_VLSM
 
         private void btnAdd_Click(object sender, EventArgs e)
         {
-            adicionarrede();
-        }
-        public void adicionarrede()
-        {
             redehosts.Add(nudQtdhosts.Value);
-            
+            redehosts.Sort();
+            redehosts.Reverse();
+            //adicionarrede(nudQtdhosts.Value);
+            preencher();
+        }
+
+        public decimal adicionarrede(decimal i)
+        {
+            //redehosts.OrderByDescending(x => x);
+            return i;
         }
 
         private void btnCalcular_Click(object sender, EventArgs e)
         {
-            preencher();
         }
     }
 }
