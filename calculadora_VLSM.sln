@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.28307.852
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "calculadora_VLSM", "calculadora_VLSM\calculadora_VLSM.csproj", "{CEE8DC2C-96F9-456B-8A8E-4905183E8EB5}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{CEE8DC2C-96F9-456B-8A8E-4905183E8EB5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CEE8DC2C-96F9-456B-8A8E-4905183E8EB5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CEE8DC2C-96F9-456B-8A8E-4905183E8EB5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CEE8DC2C-96F9-456B-8A8E-4905183E8EB5}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {90F193E4-E118-4BF3-B5E2-B4FAB6ADA703}
+	EndGlobalSection
+EndGlobal

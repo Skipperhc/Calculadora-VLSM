@@ -1,0 +1,10 @@
+C:\Users\pedri\OneDrive - Complexo de Ensino Superior do Brasil LTDA\FACULDADE\2019 SEMESTRE - 2\Rede de Computadores\calculadora_VLSM\calculadora_VLSM\bin\Debug\calculadora_VLSM.exe.config
+C:\Users\pedri\OneDrive - Complexo de Ensino Superior do Brasil LTDA\FACULDADE\2019 SEMESTRE - 2\Rede de Computadores\calculadora_VLSM\calculadora_VLSM\bin\Debug\calculadora_VLSM.exe
+C:\Users\pedri\OneDrive - Complexo de Ensino Superior do Brasil LTDA\FACULDADE\2019 SEMESTRE - 2\Rede de Computadores\calculadora_VLSM\calculadora_VLSM\bin\Debug\calculadora_VLSM.pdb
+C:\Users\pedri\OneDrive - Complexo de Ensino Superior do Brasil LTDA\FACULDADE\2019 SEMESTRE - 2\Rede de Computadores\calculadora_VLSM\calculadora_VLSM\obj\Debug\calculadora_VLSM.csprojAssemblyReference.cache
+C:\Users\pedri\OneDrive - Complexo de Ensino Superior do Brasil LTDA\FACULDADE\2019 SEMESTRE - 2\Rede de Computadores\calculadora_VLSM\calculadora_VLSM\obj\Debug\calculadora_VLSM.calculadora_VLSM.resources
+C:\Users\pedri\OneDrive - Complexo de Ensino Superior do Brasil LTDA\FACULDADE\2019 SEMESTRE - 2\Rede de Computadores\calculadora_VLSM\calculadora_VLSM\obj\Debug\calculadora_VLSM.Properties.Resources.resources
+C:\Users\pedri\OneDrive - Complexo de Ensino Superior do Brasil LTDA\FACULDADE\2019 SEMESTRE - 2\Rede de Computadores\calculadora_VLSM\calculadora_VLSM\obj\Debug\calculadora_VLSM.csproj.GenerateResource.cache
+C:\Users\pedri\OneDrive - Complexo de Ensino Superior do Brasil LTDA\FACULDADE\2019 SEMESTRE - 2\Rede de Computadores\calculadora_VLSM\calculadora_VLSM\obj\Debug\calculadora_VLSM.csproj.CoreCompileInputs.cache
+C:\Users\pedri\OneDrive - Complexo de Ensino Superior do Brasil LTDA\FACULDADE\2019 SEMESTRE - 2\Rede de Computadores\calculadora_VLSM\calculadora_VLSM\obj\Debug\calculadora_VLSM.exe
+C:\Users\pedri\OneDrive - Complexo de Ensino Superior do Brasil LTDA\FACULDADE\2019 SEMESTRE - 2\Rede de Computadores\calculadora_VLSM\calculadora_VLSM\obj\Debug\calculadora_VLSM.pdb
