@@ -46,6 +46,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Model\numero.cs" />
     <Compile Include="View\calculadora_VLSM.cs">
       <SubType>Form</SubType>
     </Compile>
