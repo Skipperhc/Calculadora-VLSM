@@ -33,9 +33,6 @@
             this.btnContinuar = new System.Windows.Forms.Button();
             this.btnReiniciar = new System.Windows.Forms.Button();
             this.dgv = new System.Windows.Forms.DataGridView();
-            this.hostsUtilizaveis = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.totalHosts = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.tamanhoRede = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.label2 = new System.Windows.Forms.Label();
             this.btnAdd = new System.Windows.Forms.Button();
             this.btnCalcular = new System.Windows.Forms.Button();
@@ -83,36 +80,11 @@
             // dgv
             // 
             this.dgv.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgv.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.hostsUtilizaveis,
-            this.totalHosts,
-            this.tamanhoRede});
             this.dgv.Location = new System.Drawing.Point(15, 190);
             this.dgv.Name = "dgv";
             this.dgv.Size = new System.Drawing.Size(543, 176);
             this.dgv.TabIndex = 4;
             this.dgv.Visible = false;
-            // 
-            // hostsUtilizaveis
-            // 
-            this.hostsUtilizaveis.HeaderText = "Hosts Uti.";
-            this.hostsUtilizaveis.Name = "hostsUtilizaveis";
-            this.hostsUtilizaveis.ReadOnly = true;
-            this.hostsUtilizaveis.Width = 200;
-            // 
-            // totalHosts
-            // 
-            this.totalHosts.HeaderText = "Total de Hosts";
-            this.totalHosts.Name = "totalHosts";
-            this.totalHosts.ReadOnly = true;
-            this.totalHosts.Width = 150;
-            // 
-            // tamanhoRede
-            // 
-            this.tamanhoRede.HeaderText = "Tamanho da Rede";
-            this.tamanhoRede.Name = "tamanhoRede";
-            this.tamanhoRede.ReadOnly = true;
-            this.tamanhoRede.Width = 150;
             // 
             // label2
             // 
@@ -206,9 +178,6 @@
         private System.Windows.Forms.Button btnCalcular;
         private System.Windows.Forms.RichTextBox richTextBox1;
         private System.Windows.Forms.NumericUpDown nudQtdhosts;
-        private System.Windows.Forms.DataGridViewTextBoxColumn hostsUtilizaveis;
-        private System.Windows.Forms.DataGridViewTextBoxColumn totalHosts;
-        private System.Windows.Forms.DataGridViewTextBoxColumn tamanhoRede;
     }
 }
 

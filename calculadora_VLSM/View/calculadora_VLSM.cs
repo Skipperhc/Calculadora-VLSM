@@ -23,53 +23,40 @@ namespace calculadora_VLSM
 
         private void Form1_Load(object sender, EventArgs e)
         {
-
-
-
         }
 
         public void identificarClassMasc()
         {
-            model model = new model();
             string[] classeMascara = txtIpEntrada.Text.Split('.');
             model.ip1 = int.Parse(classeMascara[0]);
             model.ip2 = int.Parse(classeMascara[1]);
             model.ip3 = int.Parse(classeMascara[2]);
             model.ip4 = int.Parse(classeMascara[3]);
-            model.maskpad = Convert.ToString(definirClasse(model.ip1));
-
+            definirClasse(model.ip1);
         }
-        public string definirClasse(int num)
+        public void definirClasse(int num)
         {
-            string maskPad = "";
-
             if (num <= 127)
             {
-                maskPad = "255.0.0.0";
+                model.maskpad = "255.0.0.0";
+                model.classe = 'A';
+
             }
             else if (num >= 128 && num <= 191)
             {
-                maskPad = "255.255.0.0";
+                model.maskpad = "255.255.0.0";
+                model.classe = 'B';
             }
             else if (num >= 192 && num <= 223)
             {
-                maskPad = "255.255.255.0";
+                model.maskpad = "255.255.255.0";
+                model.classe = 'C';
             }
-
             else
             {
                 MessageBox.Show("Classe customizada, o cálculo não podera ser realizado");
             }
-
-            return maskPad;
-
         }
-
-        //public int potenciacao(int i)
-        //{
-        //    Math.Pow(i, 2);
-        //    return i;
-        //}
 
         private void btnContinuar_Click(object sender, EventArgs e)
         {
@@ -90,13 +77,14 @@ namespace calculadora_VLSM
         private void btnAdd_Click(object sender, EventArgs e)
         {
             numero numeros = new numero();
-            numeros.numeros = Convert.ToInt32(nudQtdhosts.Value);
-            numeros.enderecoUtil = Convert.ToInt32(nudQtdhosts.Value + 2);
-            numeros.potencia = acharpotencia(numeros.enderecoUtil);
+            numeros.Hosts = Convert.ToInt32(nudQtdhosts.Value);
+            numeros.Mais2 = Convert.ToInt32(nudQtdhosts.Value + 2);
+            numeros.PotenciaProx = acharpotencia(numeros.Mais2);
             redehosts.Add(numeros);
             numeros = null;
-            //redehosts.Sort();
-            //redehosts.Reverse();
+            redehosts = redehosts.OrderByDescending(x => x.PotenciaProx).ToList();
+            nudQtdhosts.Focus();
+            nudQtdhosts.Value = 0;
         }
 
         public int acharpotencia(int num)
@@ -136,12 +124,6 @@ namespace calculadora_VLSM
             return model.potencia;
         }
 
-        public decimal adicionarrede(decimal i)
-        {
-            //redehosts.OrderByDescending(x => x);
-            return i;
-        }
-
         private void btnCalcular_Click(object sender, EventArgs e)
         {
             preencher();
@@ -149,15 +131,12 @@ namespace calculadora_VLSM
 
         public void preencher()
         {
-            //for (int i = 0; i < redehosts.Count; i++)
-            //{
-            //    dgv.Rows.Add(redehosts);
-            //    dgv.Rows[i].Cells[0].Value = redehosts[i].numeros;
-            //    dgv.Rows[i].Cells[1].Value = redehosts[i].enderecoUtil;
-            //    dgv.Rows[i].Cells[2].Value = redehosts[i].potencia;
-            //}
             dgv.DataSource = null;
             dgv.DataSource = redehosts;
+
+            richTextBox1.AppendText("Id de rede: "+txtIpEntrada.Text + "\r\n");
+            richTextBox1.AppendText("Classe: " + model.classe.ToString() + "\r\n");
+            richTextBox1.AppendText("Máscara Padrão: " +model.maskpad + "\r\n");
         }
     }
 }

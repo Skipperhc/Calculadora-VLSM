@@ -8,8 +8,40 @@ namespace calculadora_VLSM.Model
 {
     class numero
     {
-        public int numeros {get; set;}
-        public int enderecoUtil {get; set;}
-        public int potencia {get; set;}
+        private int numeros {get; set;}
+        private int enderecoUtil {get; set;}
+        private int potencia {get; set;}
+
+        public int Hosts{
+            get{
+                return numeros;
+            }
+            set
+            {
+                numeros = value;
+            }
+        }
+        public int Mais2
+        {
+            get
+            {
+                return enderecoUtil;
+            }
+            set
+            {
+                enderecoUtil = value;
+            }
+        }
+        public int PotenciaProx
+        {
+            get
+            {
+                return potencia;
+            }
+            set
+            {
+                potencia = value;
+            }
+        }
     }
 }

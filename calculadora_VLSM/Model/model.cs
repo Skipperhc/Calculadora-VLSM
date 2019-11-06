@@ -18,6 +18,7 @@ namespace calculadora_VLSM.Model
         public string oc4 { get; set; }
         public string maskpad { get; set; }
         public int potencia { get; set; }
+        public char classe { get; set; }
 
     }
 }
