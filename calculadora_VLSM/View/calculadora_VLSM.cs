@@ -15,7 +15,6 @@ namespace calculadora_VLSM
     {
         List<numero> redehosts = new List<numero>();
         model model = new model();
-        numero numeros = new numero();
 
         public calculadora_VLSM()
         {
@@ -66,19 +65,6 @@ namespace calculadora_VLSM
 
         }
 
-        public void preencher()
-        {
-            for (int i = 0; i < redehosts.Count; i++)
-            {
-
-                dgv.Rows.Add(redehosts);
-                //dgv.Rows[i].Cells[0].Value = i;
-                dgv.Rows[i].Cells[0].Value = redehosts[i].numeros;
-                dgv.Rows[i].Cells[1].Value = (redehosts[i].numeros + 2);
-                dgv.Rows[i].Cells[2].Value = acharpotencia();
-            }
-        }
-
         //public int potenciacao(int i)
         //{
         //    Math.Pow(i, 2);
@@ -103,42 +89,51 @@ namespace calculadora_VLSM
 
         private void btnAdd_Click(object sender, EventArgs e)
         {
-            acharpotencia(Convert.ToInt32(nudQtdhosts.Value));
+            numero numeros = new numero();
+            numeros.numeros = Convert.ToInt32(nudQtdhosts.Value);
+            numeros.enderecoUtil = Convert.ToInt32(nudQtdhosts.Value + 2);
+            numeros.potencia = acharpotencia(numeros.enderecoUtil);
             redehosts.Add(numeros);
-            redehosts.Sort();
-            redehosts.Reverse();
+            numeros = null;
+            //redehosts.Sort();
+            //redehosts.Reverse();
         }
-        public void acharpotencia(int num)
+
+        public int acharpotencia(int num)
         {
-            numeros.numeros = num;
+            if (num >= 0 && num <= 2)
+            {
+                model.potencia = 2;
+            }
             if (num > 2 && num <= 4)
             {
                 model.potencia = 4;
             }
-            else if (num > 4 && num <= 8)
+            if (num > 4 && num <= 8)
             {
                 model.potencia = 8;
             }
-            else if (num > 8 && num <= 16)
+            if (num > 8 && num <= 16)
             {
                 model.potencia = 16;
             }
-            else if (num > 16 && num <= 32)
+            if (num > 16 && num <= 32)
             {
                 model.potencia = 32;
             }
-            else if (num > 32 && num <= 64)
+            if (num > 32 && num <= 64)
             {
                 model.potencia = 64;
             }
-            else if (num > 64 && num <= 128)
+            if (num > 64 && num <= 128)
             {
                 model.potencia = 128;
             }
-            else if (num > 128 && num <= 256)
+            if (num > 128 && num <= 256)
             {
                 model.potencia = 256;
             }
+            return model.potencia;
         }
 
         public decimal adicionarrede(decimal i)
@@ -150,6 +145,19 @@ namespace calculadora_VLSM
         private void btnCalcular_Click(object sender, EventArgs e)
         {
             preencher();
+        }
+
+        public void preencher()
+        {
+            //for (int i = 0; i < redehosts.Count; i++)
+            //{
+            //    dgv.Rows.Add(redehosts);
+            //    dgv.Rows[i].Cells[0].Value = redehosts[i].numeros;
+            //    dgv.Rows[i].Cells[1].Value = redehosts[i].enderecoUtil;
+            //    dgv.Rows[i].Cells[2].Value = redehosts[i].potencia;
+            //}
+            dgv.DataSource = null;
+            dgv.DataSource = redehosts;
         }
     }
 }

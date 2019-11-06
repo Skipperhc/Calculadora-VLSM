@@ -159,6 +159,11 @@
             // nudQtdhosts
             // 
             this.nudQtdhosts.Location = new System.Drawing.Point(196, 118);
+            this.nudQtdhosts.Maximum = new decimal(new int[] {
+            1410065407,
+            2,
+            0,
+            0});
             this.nudQtdhosts.Name = "nudQtdhosts";
             this.nudQtdhosts.Size = new System.Drawing.Size(189, 20);
             this.nudQtdhosts.TabIndex = 10;

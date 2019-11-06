@@ -9,6 +9,7 @@ namespace calculadora_VLSM.Model
     class numero
     {
         public int numeros {get; set;}
+        public int enderecoUtil {get; set;}
         public int potencia {get; set;}
     }
 }
