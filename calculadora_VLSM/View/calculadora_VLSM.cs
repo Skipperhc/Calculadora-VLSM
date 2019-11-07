@@ -107,18 +107,14 @@ namespace calculadora_VLSM
             return convert;
         }
 
-        public string AddHostsIP(string IP)
+        public string AddHostsIP(string IP, double pot)
         {
             string[] vet = IP.Split('.');
             int num1 = Convert.ToInt32(vet[0]);
             int num2 = Convert.ToInt32(vet[1]); 
             int num3 = Convert.ToInt32(vet[2]); 
             int num4 = Convert.ToInt32(vet[3]);
-            double power = 0;
-            foreach (var item in redehosts)
-            {
-                power = item.PotenciaProx;
-            }
+            double oc4Som = num4 + pot;
 
             if (model.classe=='A')
             {
@@ -130,9 +126,9 @@ namespace calculadora_VLSM
             }
             else if (model.classe == 'C')
             {
-                if (power<256)
+                if (oc4Som < 256)
                 {
-                    IP = $"{num1}.{num2}.{num3}.{(num4 + power) - 1}";
+                    IP = $"{num1}.{num2}.{num3}.{(num4 + pot) - 1}";
                 }
                 else
                 {
@@ -196,7 +192,8 @@ namespace calculadora_VLSM
 
             for (int i = 0; i < redehosts.Count; i++)
             {
-                string hostsAdd = AddHostsIP(txtIpEntrada.Text);
+                double pot = redehosts[i].PotenciaProx;
+                string hostsAdd = AddHostsIP(txtIpEntrada.Text, pot);
                 double ptProx = redehosts[i].PotenciaProx;
                 string ipSomado = AcumularHostsIP(hostsAdd,ptProx);
 

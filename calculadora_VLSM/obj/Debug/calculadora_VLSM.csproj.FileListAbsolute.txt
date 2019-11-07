@@ -18,3 +18,12 @@ C:\Users\pedro\OneDrive - Complexo de Ensino Superior do Brasil LTDA\Redes\Traba
 C:\Users\pedro\OneDrive - Complexo de Ensino Superior do Brasil LTDA\Redes\Trabalho-Bonilha-2-Bimestre-Redes\calculadora_VLSM\obj\Debug\calculadora_VLSM.csproj.CoreCompileInputs.cache
 C:\Users\pedro\OneDrive - Complexo de Ensino Superior do Brasil LTDA\Redes\Trabalho-Bonilha-2-Bimestre-Redes\calculadora_VLSM\obj\Debug\calculadora_VLSM.exe
 C:\Users\pedro\OneDrive - Complexo de Ensino Superior do Brasil LTDA\Redes\Trabalho-Bonilha-2-Bimestre-Redes\calculadora_VLSM\obj\Debug\calculadora_VLSM.pdb
+C:\Users\precioso\Documents\repos-git\Redes de Computadores\Trabalho-Bonilha-2-Bimestre-Redes\calculadora_VLSM\bin\Debug\calculadora_VLSM.exe.config
+C:\Users\precioso\Documents\repos-git\Redes de Computadores\Trabalho-Bonilha-2-Bimestre-Redes\calculadora_VLSM\bin\Debug\calculadora_VLSM.exe
+C:\Users\precioso\Documents\repos-git\Redes de Computadores\Trabalho-Bonilha-2-Bimestre-Redes\calculadora_VLSM\bin\Debug\calculadora_VLSM.pdb
+C:\Users\precioso\Documents\repos-git\Redes de Computadores\Trabalho-Bonilha-2-Bimestre-Redes\calculadora_VLSM\obj\Debug\calculadora_VLSM.csprojAssemblyReference.cache
+C:\Users\precioso\Documents\repos-git\Redes de Computadores\Trabalho-Bonilha-2-Bimestre-Redes\calculadora_VLSM\obj\Debug\calculadora_VLSM.calculadora_VLSM.resources
+C:\Users\precioso\Documents\repos-git\Redes de Computadores\Trabalho-Bonilha-2-Bimestre-Redes\calculadora_VLSM\obj\Debug\calculadora_VLSM.Properties.Resources.resources
+C:\Users\precioso\Documents\repos-git\Redes de Computadores\Trabalho-Bonilha-2-Bimestre-Redes\calculadora_VLSM\obj\Debug\calculadora_VLSM.csproj.GenerateResource.cache
+C:\Users\precioso\Documents\repos-git\Redes de Computadores\Trabalho-Bonilha-2-Bimestre-Redes\calculadora_VLSM\obj\Debug\calculadora_VLSM.exe
+C:\Users\precioso\Documents\repos-git\Redes de Computadores\Trabalho-Bonilha-2-Bimestre-Redes\calculadora_VLSM\obj\Debug\calculadora_VLSM.pdb
