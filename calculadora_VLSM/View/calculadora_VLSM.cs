@@ -87,41 +87,30 @@ namespace calculadora_VLSM
             nudQtdhosts.Value = 0;
         }
 
-        public int acharpotencia(int num)
+        public string Binary(int oc1, int oc2, int oc3, int oc4)
         {
-            if (num >= 0 && num <= 2)
+            string convert1 = Convert.ToString(oc1, 2);
+            convert1 = convert1.PadLeft(8, '0');
+            string convert2 = Convert.ToString(oc2, 2);
+            convert2 = convert2.PadLeft(8, '0');
+            string convert3 = Convert.ToString(oc3, 2);
+            convert3 = convert3.PadLeft(8, '0');
+            string convert4 = Convert.ToString(oc4, 2);
+            convert4 = convert4.PadLeft(8, '0');
+            string convert = $"{convert1}.{convert2}.{convert3}.{convert4}";
+            return convert;
+        }
+
+        public double acharpotencia(int num)
+        {
+            double potencia = 0;
+            int i = 0;
+            while (potencia<=num)
             {
-                model.potencia = 2;
+                potencia = Math.Pow(2, i);
+                i++;
             }
-            if (num > 2 && num <= 4)
-            {
-                model.potencia = 4;
-            }
-            if (num > 4 && num <= 8)
-            {
-                model.potencia = 8;
-            }
-            if (num > 8 && num <= 16)
-            {
-                model.potencia = 16;
-            }
-            if (num > 16 && num <= 32)
-            {
-                model.potencia = 32;
-            }
-            if (num > 32 && num <= 64)
-            {
-                model.potencia = 64;
-            }
-            if (num > 64 && num <= 128)
-            {
-                model.potencia = 128;
-            }
-            if (num > 128 && num <= 256)
-            {
-                model.potencia = 256;
-            }
-            return model.potencia;
+            return potencia;
         }
 
         private void btnCalcular_Click(object sender, EventArgs e)
@@ -133,10 +122,11 @@ namespace calculadora_VLSM
         {
             dgv.DataSource = null;
             dgv.DataSource = redehosts;
-
+            string bin = Binary(model.ip1, model.ip2, model.ip3, model.ip4);
             richTextBox1.AppendText("Id de rede: "+txtIpEntrada.Text + "\r\n");
             richTextBox1.AppendText("Classe: " + model.classe.ToString() + "\r\n");
             richTextBox1.AppendText("Máscara Padrão: " +model.maskpad + "\r\n");
+            richTextBox1.AppendText("Endereço Binario: " + bin + "\r\n");
         }
     }
 }

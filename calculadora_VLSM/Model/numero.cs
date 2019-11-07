@@ -10,7 +10,7 @@ namespace calculadora_VLSM.Model
     {
         private int numeros {get; set;}
         private int enderecoUtil {get; set;}
-        private int potencia {get; set;}
+        private double potencia {get; set;}
 
         public int Hosts{
             get{
@@ -32,7 +32,7 @@ namespace calculadora_VLSM.Model
                 enderecoUtil = value;
             }
         }
-        public int PotenciaProx
+        public double PotenciaProx
         {
             get
             {
