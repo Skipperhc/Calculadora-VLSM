@@ -66,7 +66,6 @@ namespace calculadora_VLSM
             nudQtdhosts.Visible = true;
             btnAdd.Visible = true;
             btnCalcular.Visible = true;
-            richTextBox1.Visible = true;
         }
 
         public class nums
@@ -85,27 +84,92 @@ namespace calculadora_VLSM
             redehosts = redehosts.OrderByDescending(x => x.PotenciaProx).ToList();
             nudQtdhosts.Focus();
             nudQtdhosts.Value = 0;
-        }
+            dgv.DataSource = null;
+            dgv.DataSource = redehosts;
+        }       
 
-        public string Binary(int oc1, int oc2, int oc3, int oc4)
+        public string Binary(string num)
         {
-            string convert1 = Convert.ToString(oc1, 2);
+            string[] IP = num.Split('.');
+            int num1 = Convert.ToInt32(IP[0]);
+            int num2 = Convert.ToInt32(IP[1]);
+            int num3 = Convert.ToInt32(IP[2]);
+            int num4 = Convert.ToInt32(IP[3]);
+            string convert1 = Convert.ToString(num1, 2);
             convert1 = convert1.PadLeft(8, '0');
-            string convert2 = Convert.ToString(oc2, 2);
+            string convert2 = Convert.ToString(num2, 2);
             convert2 = convert2.PadLeft(8, '0');
-            string convert3 = Convert.ToString(oc3, 2);
+            string convert3 = Convert.ToString(num3, 2);
             convert3 = convert3.PadLeft(8, '0');
-            string convert4 = Convert.ToString(oc4, 2);
+            string convert4 = Convert.ToString(num4, 2);
             convert4 = convert4.PadLeft(8, '0');
             string convert = $"{convert1}.{convert2}.{convert3}.{convert4}";
             return convert;
+        }
+
+        public string AddHostsIP(string IP)
+        {
+            string[] vet = IP.Split('.');
+            int num1 = Convert.ToInt32(vet[0]);
+            int num2 = Convert.ToInt32(vet[1]); 
+            int num3 = Convert.ToInt32(vet[2]); 
+            int num4 = Convert.ToInt32(vet[3]);
+            double power = 0;
+            foreach (var item in redehosts)
+            {
+                power = item.PotenciaProx;
+            }
+
+            if (model.classe=='A')
+            {
+                IP = $"{num1}.{num2}.{num3}.{num4}";
+            }
+            else if (model.classe == 'B')
+            {
+                IP = $"{num1}.{num2}.{num3}.{num4}";
+            }
+            else if (model.classe == 'C')
+            {
+                if (power<256)
+                {
+                    IP = $"{num1}.{num2}.{num3}.{(num4 + power) - 1}";
+                }
+                else
+                {
+                    MessageBox.Show("A classe C não comporta mais de 256 hosts");
+                }
+            }
+            return IP;
+        }
+
+        public string AcumularHostsIP(string IP, double potencia)
+        {
+            string[] vet = IP.Split('.');
+            int num1 = Convert.ToInt32(vet[0]);
+            int num2 = Convert.ToInt32(vet[1]);
+            int num3 = Convert.ToInt32(vet[2]);
+            int num4 = Convert.ToInt32(vet[3]);            
+
+            if (model.classe == 'A')
+            {
+                IP = $"{num1}.{num2}.{num3}.{num4}";
+            }
+            else if (model.classe == 'B')
+            {
+                IP = $"{num1}.{num2}.{num3}.{num4}";
+            }
+            else if (model.classe == 'C')
+            {
+                IP = $"{num1}.{num2}.{num3}.{(num4 + potencia)}";
+            }
+            return IP;
         }
 
         public double acharpotencia(int num)
         {
             double potencia = 0;
             int i = 0;
-            while (potencia<=num)
+            while(potencia<num)
             {
                 potencia = Math.Pow(2, i);
                 i++;
@@ -115,18 +179,33 @@ namespace calculadora_VLSM
 
         private void btnCalcular_Click(object sender, EventArgs e)
         {
-            preencher();
+            richTextBox1.Visible = true;
+            preencher();            
         }
 
         public void preencher()
         {
-            dgv.DataSource = null;
-            dgv.DataSource = redehosts;
-            string bin = Binary(model.ip1, model.ip2, model.ip3, model.ip4);
+            string bin = Binary(txtIpEntrada.Text);
+            string mascBin = Binary(model.maskpad);
             richTextBox1.AppendText("Id de rede: "+txtIpEntrada.Text + "\r\n");
             richTextBox1.AppendText("Classe: " + model.classe.ToString() + "\r\n");
             richTextBox1.AppendText("Máscara Padrão: " +model.maskpad + "\r\n");
             richTextBox1.AppendText("Endereço Binario: " + bin + "\r\n");
+            richTextBox1.AppendText("Máscara Binario: " + mascBin + "\r\n");
+            
+
+            for (int i = 0; i < redehosts.Count; i++)
+            {
+                string hostsAdd = AddHostsIP(txtIpEntrada.Text);
+                double ptProx = redehosts[i].PotenciaProx;
+                string ipSomado = AcumularHostsIP(hostsAdd,ptProx);
+
+                richTextBox1.AppendText("\r\n");
+                richTextBox1.AppendText("\r\n");
+                richTextBox1.AppendText($"SubRede {i}: " + ipSomado + " / " + hostsAdd + "\r\n");
+                richTextBox1.AppendText("\r\n");
+                richTextBox1.AppendText("\r\n");
+            }
         }
     }
 }
