@@ -66,7 +66,6 @@ namespace calculadora_VLSM
             label2.Visible = true;
             nudQtdhosts.Visible = true;
             btnAdd.Visible = true;
-            btnCalcular.Visible = true;
         }
 
         public class nums
@@ -87,6 +86,7 @@ namespace calculadora_VLSM
             nudQtdhosts.Value = 0;
             dgv.DataSource = null;
             dgv.DataSource = redehosts;
+            btnCalcular.Visible = true;
         }
 
         public string Binary(string num)
@@ -116,25 +116,26 @@ namespace calculadora_VLSM
             int num3 = Convert.ToInt32(vet[2]);
             int num4 = Convert.ToInt32(vet[3]);
             //double oc4Som = num4 + pot;
+            IP = $"{num1}.{num2}.{num3}.{(num4 - 1)}";
 
-            if (model.classe == 'A')
-            {
-                IP = $"{num1}.{num2}.{num3}.{num4}";
-            }
-            else if (model.classe == 'B')
-            {
-                IP = $"{num1}.{num2}.{num3}.{num4}";
-            }
-            else if (model.classe == 'C')
-            {
-                
-                    IP = $"{num1}.{num2}.{num3}.{(num4 - 1)}";
-                
-                //else
-                //{
-                //    MessageBox.Show("A classe C não comporta mais de 256 hosts");
-                //}
-            }
+            //if (model.classe == 'A')
+            //{
+            //    IP = $"{num1}.{num2}.{num3}.{num4}";
+            //}
+            //else if (model.classe == 'B')
+            //{
+            //    IP = $"{num1}.{num2}.{num3}.{num4}";
+            //}
+            //else if (model.classe == 'C')
+            //{
+
+            //        IP = $"{num1}.{num2}.{num3}.{(num4 - 1)}";
+
+            //    //else
+            //    //{
+            //    //    MessageBox.Show("A classe C não comporta mais de 256 hosts");
+            //    //}
+            //}
             return IP;
         }
 
@@ -145,14 +146,35 @@ namespace calculadora_VLSM
             int num2 = Convert.ToInt32(vet[1]);
             int num3 = Convert.ToInt32(vet[2]);
             int num4 = Convert.ToInt32(vet[3]);
+            int nummax = num4 + Convert.ToInt32(potencia);
+            int num3maisum = num3;
 
             if (model.classe == 'A')
             {
-                IP = $"{num1}.{num2}.{num3}.{num4}";
+                if (nummax < 256) {
+                    IP = $"{num1}.{num2}.{num3}.{nummax}";
+                } else {
+                    while (nummax > 256) {
+                        nummax = nummax - 256;
+                        num3++;
+                        if (num3 > 256) {
+                            num2++;
+                        }
+                    }
+                    IP = $"{num1}.{num2}.{num3}.{nummax}";
+                }
             }
             else if (model.classe == 'B')
             {
-                IP = $"{num1}.{num2}.{num3}.{num4}";
+                if (nummax < 256) {
+                    IP = $"{num1}.{num2}.{num3}.{nummax}";
+                }else {
+                    while (nummax > 256) {
+                        nummax = nummax - 256;
+                        num3++;
+                    }
+                    IP = $"{num1}.{num2}.{num3}.{nummax}";
+                }
             }
             else if (model.classe == 'C')
             {
@@ -205,7 +227,7 @@ namespace calculadora_VLSM
                 //richTextBox1.AppendText($"{Binary(ipSomado)}\r\n");
                 //richTextBox1.AppendText($"{Binary(hostsAdd)} \r\n");
 
-                richTextBox1.AppendText($"\r\n \r\n Subrede {i} : {ip}  / {ipSomado}");
+                richTextBox1.AppendText($"\r\n \r\n Subrede {i} : {ip}  / {broad}");
                 richTextBox1.AppendText($"\r\n BroadCast: {broad}");
 
             }
@@ -220,7 +242,7 @@ namespace calculadora_VLSM
             btnAdd.Visible = false;
             richTextBox1.Visible = false;
             dgv.Visible = false;
-            List<numero> redehosts = new List<numero>();
+            redehosts.Clear();
             model model = new model();
         }
     }
