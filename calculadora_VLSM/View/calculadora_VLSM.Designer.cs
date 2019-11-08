@@ -76,13 +76,14 @@
             this.btnReiniciar.TabIndex = 3;
             this.btnReiniciar.Text = "Reiniciar";
             this.btnReiniciar.UseVisualStyleBackColor = true;
+            this.btnReiniciar.Click += new System.EventHandler(this.btnReiniciar_Click);
             // 
             // dgv
             // 
             this.dgv.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgv.Location = new System.Drawing.Point(15, 190);
             this.dgv.Name = "dgv";
-            this.dgv.Size = new System.Drawing.Size(543, 176);
+            this.dgv.Size = new System.Drawing.Size(370, 176);
             this.dgv.TabIndex = 4;
             this.dgv.Visible = false;
             // 

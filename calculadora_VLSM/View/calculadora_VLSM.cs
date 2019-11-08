@@ -27,6 +27,7 @@ namespace calculadora_VLSM
 
         public void identificarClassMasc()
         {
+            model.ipAcumulado = txtIpEntrada.Text;
             string[] classeMascara = txtIpEntrada.Text.Split('.');
             model.ip1 = int.Parse(classeMascara[0]);
             model.ip2 = int.Parse(classeMascara[1]);
@@ -86,7 +87,7 @@ namespace calculadora_VLSM
             nudQtdhosts.Value = 0;
             dgv.DataSource = null;
             dgv.DataSource = redehosts;
-        }       
+        }
 
         public string Binary(string num)
         {
@@ -107,16 +108,16 @@ namespace calculadora_VLSM
             return convert;
         }
 
-        public string AddHostsIP(string IP, double pot)
+        public string BroadCast(string IP)
         {
             string[] vet = IP.Split('.');
             int num1 = Convert.ToInt32(vet[0]);
-            int num2 = Convert.ToInt32(vet[1]); 
-            int num3 = Convert.ToInt32(vet[2]); 
+            int num2 = Convert.ToInt32(vet[1]);
+            int num3 = Convert.ToInt32(vet[2]);
             int num4 = Convert.ToInt32(vet[3]);
-            double oc4Som = num4 + pot;
+            //double oc4Som = num4 + pot;
 
-            if (model.classe=='A')
+            if (model.classe == 'A')
             {
                 IP = $"{num1}.{num2}.{num3}.{num4}";
             }
@@ -126,14 +127,13 @@ namespace calculadora_VLSM
             }
             else if (model.classe == 'C')
             {
-                if (oc4Som < 256)
-                {
-                    IP = $"{num1}.{num2}.{num3}.{(num4 + pot) - 1}";
-                }
-                else
-                {
-                    MessageBox.Show("A classe C não comporta mais de 256 hosts");
-                }
+                
+                    IP = $"{num1}.{num2}.{num3}.{(num4 - 1)}";
+                
+                //else
+                //{
+                //    MessageBox.Show("A classe C não comporta mais de 256 hosts");
+                //}
             }
             return IP;
         }
@@ -144,7 +144,7 @@ namespace calculadora_VLSM
             int num1 = Convert.ToInt32(vet[0]);
             int num2 = Convert.ToInt32(vet[1]);
             int num3 = Convert.ToInt32(vet[2]);
-            int num4 = Convert.ToInt32(vet[3]);            
+            int num4 = Convert.ToInt32(vet[3]);
 
             if (model.classe == 'A')
             {
@@ -165,7 +165,7 @@ namespace calculadora_VLSM
         {
             double potencia = 0;
             int i = 0;
-            while(potencia<num)
+            while (potencia < num)
             {
                 potencia = Math.Pow(2, i);
                 i++;
@@ -176,33 +176,52 @@ namespace calculadora_VLSM
         private void btnCalcular_Click(object sender, EventArgs e)
         {
             richTextBox1.Visible = true;
-            preencher();            
+            preencher();
         }
 
         public void preencher()
         {
             string bin = Binary(txtIpEntrada.Text);
             string mascBin = Binary(model.maskpad);
-            richTextBox1.AppendText("Id de rede: "+txtIpEntrada.Text + "\r\n");
+            richTextBox1.AppendText("Id de rede: " + txtIpEntrada.Text + "\r\n");
             richTextBox1.AppendText("Classe: " + model.classe.ToString() + "\r\n");
-            richTextBox1.AppendText("Máscara Padrão: " +model.maskpad + "\r\n");
+            richTextBox1.AppendText("Máscara Padrão: " + model.maskpad + "\r\n");
             richTextBox1.AppendText("Endereço Binario: " + bin + "\r\n");
             richTextBox1.AppendText("Máscara Binario: " + mascBin + "\r\n");
-            
+
 
             for (int i = 0; i < redehosts.Count; i++)
             {
-                double pot = redehosts[i].PotenciaProx;
-                string hostsAdd = AddHostsIP(txtIpEntrada.Text, pot);
+                
+                string ip = model.ipAcumulado;
                 double ptProx = redehosts[i].PotenciaProx;
-                string ipSomado = AcumularHostsIP(hostsAdd,ptProx);
+                string ipSomado = model.ipAcumulado = AcumularHostsIP(model.ipAcumulado, ptProx);
+                string broad = BroadCast(ipSomado);
 
-                richTextBox1.AppendText("\r\n");
-                richTextBox1.AppendText("\r\n");
-                richTextBox1.AppendText($"SubRede {i}: " + ipSomado + " / " + hostsAdd + "\r\n");
-                richTextBox1.AppendText("\r\n");
-                richTextBox1.AppendText("\r\n");
+                //richTextBox1.AppendText("\r\n");
+                //richTextBox1.AppendText("\r\n");
+                //richTextBox1.AppendText($"SubRede {i}: " + ipSomado + " / " + hostsAdd + "\r\n");
+                //richTextBox1.AppendText("\r\n");
+                //richTextBox1.AppendText($"{Binary(ipSomado)}\r\n");
+                //richTextBox1.AppendText($"{Binary(hostsAdd)} \r\n");
+
+                richTextBox1.AppendText($"\r\n \r\n Subrede {i} : {ip}  / {ipSomado}");
+                richTextBox1.AppendText($"\r\n BroadCast: {broad}");
+
             }
+        }
+
+        private void btnReiniciar_Click(object sender, EventArgs e)
+        {
+            txtIpEntrada.Text = "";
+            btnCalcular.Visible = false;
+            label2.Visible = false;
+            nudQtdhosts.Visible = false;
+            btnAdd.Visible = false;
+            richTextBox1.Visible = false;
+            dgv.Visible = false;
+            List<numero> redehosts = new List<numero>();
+            model model = new model();
         }
     }
 }

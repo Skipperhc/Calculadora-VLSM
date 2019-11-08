@@ -19,6 +19,6 @@ namespace calculadora_VLSM.Model
         public string maskpad { get; set; }
         public int potencia { get; set; }
         public char classe { get; set; }
-
+        public string ipAcumulado { get; set; }
     }
 }
