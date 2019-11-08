@@ -108,7 +108,7 @@ namespace calculadora_VLSM {
                     num3 = 255;
                     num2 = num2 - 1;
                     if (num2_1 == -1) {
-                        
+
                     }
                 }
             }
@@ -200,14 +200,14 @@ namespace calculadora_VLSM {
                 string ipSomado = model.ipAcumulado = AcumularHostsIP(model.ipAcumulado, ptProx);
                 string mascksomada = model.maskacumulada = MaskCustom(model.maskacumulada, ptProx);
                 string broad = BroadCast(model.ipAcumulado);
-                string mascPad = MaskCustom(ip, redehosts.Count);
+                //string mascPad = MaskCustom(ip, redehosts.Count);
                 //richTextBox1.AppendText("\r\n");
                 //richTextBox1.AppendText("\r\n");
                 //richTextBox1.AppendText($"SubRede {i}: " + ipSomado + " / " + hostsAdd + "\r\n");
                 //richTextBox1.AppendText("\r\n");
                 //richTextBox1.AppendText($"{Binary(ipSomado)}\r\n");
                 //richTextBox1.AppendText($"{Binary(hostsAdd)} \r\n");
-                
+
                 richTextBox1.AppendText($"\r\n \r\n Subrede {i} : {ip}");
                 richTextBox1.AppendText($"\r\n BroadCast: {broad}");
                 richTextBox1.AppendText($"\r\n Máscara customizada: {mascksomada}");
@@ -234,31 +234,180 @@ namespace calculadora_VLSM {
             int num2 = Convert.ToInt32(vet[1]);
             int num3 = Convert.ToInt32(vet[2]);
             int num4 = Convert.ToInt32(vet[3]);
-            int i = 0;
+            int i = 1;
             if (model.classe == 'A') {
+                mascCustom = definirmascA(host);
 
             } else if (model.classe == 'B') {
+                mascCustom = definirmascB(host);
 
             } else if (model.classe == 'C') {
-                // 0 128 192 224 240 248 252 
-                if (host == 256) {
-                    num4 = 0;
+                mascCustom = definirmascC(host);
+                
+            }
+            
+            return mascCustom;
+        }
+
+        public string definirmascA(double host) {
+            int num1 = 255;
+            int num2 = 0;
+            int num3 = 0;
+            int num4 = 0;
+            string mascCustom = "";
+            if (model.classe == 'A') {
+                if (host == 16777216) {
+                    num2 = 0;
+                } else if (host == 8388608) {
+                    num2 = 128;
+                } else if (host == 4194304) {
+                    num2 = 192;
+                } else if (host == 2097152) {
+                    num2 = 224;
+                } else if (host == 1048576) {
+                    num2 = 240;
+                } else if (host == 524288) {
+                    num2 = 248;
+                } else if (host == 262144) {
+                    num2 = 252;
+                } else if (host == 131072) {
+                    num2 = 254;
+                } else if (host == 131072) {
+                    num2 = 255;
+                } else if (host == 65536) {
+                    num2 = 255;
+                    num3 = 128;
+                } else if (host == 32768) {
+                    num2 = 255;
+                    num3 = 192;
+                } else if (host == 16384) {
+                    num2 = 255;
+                    num3 = 224;
+                } else if (host == 8192) {
+                    num2 = 255;
+                    num3 = 240;
+                } else if (host == 4096) {
+                    num2 = 255;
+                    num3 = 248;
+                } else if (host == 2048) {
+                    num2 = 255;
+                    num3 = 252;
+                } else if (host == 1024) {
+                    num2 = 255;
+                    num3 = 254;
+                } else if (host == 512) {
+                    num2 = 255;
+                    num3 = 255;
+                } else if (host == 256) {
+                    num2 = 255;
+                    num3 = 255;
                 } else if (host == 128) {
+                    num2 = 255;
+                    num3 = 255;
                     num4 = 128;
                 } else if (host == 64) {
+                    num2 = 255;
+                    num3 = 255;
                     num4 = 192;
                 } else if (host == 32) {
+                    num2 = 255;
+                    num3 = 255;
                     num4 = 224;
                 } else if (host == 16) {
+                    num2 = 255;
+                    num3 = 255;
                     num4 = 240;
                 } else if (host == 8) {
+                    num2 = 255;
+                    num3 = 255;
                     num4 = 248;
                 } else if (host == 4) {
+                    num2 = 255;
+                    num3 = 255;
                     num4 = 252;
                 }
+                mascCustom = $"{num1}.{num2}.{num3}.{num4}";
             }
+
+            return mascCustom;
+        }
+        public string definirmascB(double host) {
+            int num1 = 255;
+            int num2 = 0;
+            int num3 = 0;
+            int num4 = 0;
+            string mascCustom = "";
+
+            if (host == 65536) {
+                num3 = 0;
+            } else if (host == 32768) {
+                num3 = 128;
+            } else if (host == 16384) {
+                num3 = 192;
+            } else if (host == 8192) {
+                num3 = 224;
+            } else if (host == 4096) {
+                num3 = 240;
+            } else if (host == 2048) {
+                num3 = 248;
+            } else if (host == 1024) {
+                num3 = 252;
+            } else if (host == 512) {
+                num3 = 254;
+            } else if (host == 256) {
+                num3 = 255;
+            } else if (host == 256) {
+                num3 = 255;
+            } else if (host == 128) {
+                num3 = 255;
+                num4 = 128;
+            } else if (host == 64) {
+                num3 = 255;
+                num4 = 192;
+            } else if (host == 32) {
+                num3 = 255;
+                num4 = 224;
+            } else if (host == 16) {
+                num3 = 255;
+                num4 = 240;
+            } else if (host == 8) {
+                num3 = 255;
+                num4 = 248;
+            } else if (host == 4) {
+                num3 = 255;
+                num4 = 252;
+            }
+
             mascCustom = $"{num1}.{num2}.{num3}.{num4}";
             return mascCustom;
         }
+
+        public string definirmascC(double host) {
+            int num1 = 255;
+            int num2 = 0;
+            int num3 = 0;
+            int num4 = 0;
+            string mascCustom = "";
+
+            if (host == 256) {
+                num4 = 0;
+            } else if (host == 128) {
+                num4 = 128;
+            } else if (host == 64) {
+                num4 = 192;
+            } else if (host == 32) {
+                num4 = 224;
+            } else if (host == 16) {
+                num4 = 240;
+            } else if (host == 8) {
+                num4 = 248;
+            } else if (host == 4) {
+                num4 = 252;
+            }
+
+            mascCustom = $"{num1}.{num2}.{num3}.{num4}";
+            return mascCustom;
+        }
+
     }
 }
